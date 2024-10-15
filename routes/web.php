@@ -40,9 +40,10 @@ Route::prefix('panel')->middleware('auth')->group(function () {
         ->names('panel.transaction');
 
     Route::resource('vidio', VidioController::class)->names('panel.vidio');
+    //menu
+    Route::put('/panel/menu/{id}', [MenuController::class, 'update'])->name('panel.menu.update');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::put('/panel/menu/{id}', [MenuController::class, 'update'])->name('panel.menu.update');

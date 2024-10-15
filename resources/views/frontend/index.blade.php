@@ -32,13 +32,6 @@
     {{-- sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- =======================================================
-  * Template Name: Yummy
-  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -129,7 +122,8 @@
                             <ul>
                                 <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea
                                         commodo consequat.</span></li>
-                                <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in reprehenderit
+                                <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in
+                                        reprehenderit
                                         in voluptate velit.</span></li>
                                 <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea
                                         commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
@@ -295,127 +289,42 @@
             }
           </script>
                     <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="row gy-4 justify-content-center">
-                                    <div class="col-lg-6">
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora
-                                                    entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam
-                                                    eget nibh et. Maecen aliquam, risus at semper.</span>
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <h3>Saul Goodman</h3>
-                                            <h4>Ceo &amp; Founder</h4>
-                                            <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
+                        @foreach ($reviews as $review)
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <div class="row gy-4 justify-content-center">
+                                        <div class="col-lg-6">
+                                            <div class="testimonial-content">
+                                                <p>
+                                                    <i class="bi bi-quote quote-icon-left"></i>
+                                                    <span>{{ $review->comment }}</span>
+                                                    <i class="bi bi-quote quote-icon-right"></i>
+                                                </p>
+                                                <h3>{{ $review->name }}</h3>
+                                                <h4>Pelanggan</h4>
+                                                <div class="stars">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= $review->rate)
+                                                            <i class="bi bi-star-fill"></i>
+                                                        @else
+                                                            <i class="bi bi-star"></i>
+                                                        @endif
+                                                    @endfor
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="{{ asset('frontend') }}/img/testimonials/testimonials-1.jpg"
-                                            class="img-fluid testimonial-img" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="row gy-4 justify-content-center">
-                                    <div class="col-lg-6">
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                <span>Export tempor illum tamen malis malis eram quae irure esse labore
-                                                    quem cillum quid cillum eram malis quorum velit fore eram velit sunt
-                                                    aliqua noster fugiat irure amet legam anim culpa.</span>
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <h3>Sara Wilsson</h3>
-                                            <h4>Designer</h4>
-                                            <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
-                                            </div>
+                                        <div class="col-lg-2 text-center">
+                                            <img src="{{ asset('frontend') }}/img/testimonials/default.jpg"
+                                                class="img-fluid testimonial-img" alt="">
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="{{ asset('frontend') }}/img/testimonials/testimonials-2.jpg"
-                                            class="img-fluid testimonial-img" alt="">
-                                    </div>
                                 </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="row gy-4 justify-content-center">
-                                    <div class="col-lg-6">
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                <span>Enim nisi quem export duis labore cillum quae magna enim sint
-                                                    quorum nulla quem veniam duis minim tempor labore quem eram duis
-                                                    noster aute amet eram fore quis sint minim.</span>
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <h3>Jena Karlis</h3>
-                                            <h4>Store Owner</h4>
-                                            <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="{{ asset('frontend') }}/img/testimonials/testimonials-3.jpg"
-                                            class="img-fluid testimonial-img" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="row gy-4 justify-content-center">
-                                    <div class="col-lg-6">
-                                        <div class="testimonial-content">
-                                            <p>
-                                                <i class="bi bi-quote quote-icon-left"></i>
-                                                <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos
-                                                    export minim fugiat minim velit minim dolor enim duis veniam ipsum
-                                                    anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                                                <i class="bi bi-quote quote-icon-right"></i>
-                                            </p>
-                                            <h3>John Larson</h3>
-                                            <h4>Entrepreneur</h4>
-                                            <div class="stars">
-                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                    class="bi bi-star-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 text-center">
-                                        <img src="{{ asset('frontend') }}/img/testimonials/testimonials-4.jpg"
-                                            class="img-fluid testimonial-img" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
+                            </div><!-- End testimonial item -->
+                        @endforeach
 
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-
             </div>
 
         </section><!-- /Testimonials Section -->

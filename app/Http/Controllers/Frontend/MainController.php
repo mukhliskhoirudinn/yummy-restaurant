@@ -14,6 +14,7 @@ class MainController extends Controller
      */
     public function __invoke(Request $request)
     {
+        // Ambil data chef dan event seperti sebelumnya
         $chefs = DB::table('chefs')->orderBy('id', 'desc')
             ->limit(6)
             ->get(['name', 'position', 'description', 'photo', 'insta_link', 'linked_link']);
@@ -24,6 +25,14 @@ class MainController extends Controller
 
         $images = DB::table('images')->latest()->get(['name', 'file']);
 
+        // Ambil data review dengan transaksi
+        $reviews = DB::table('reviews')
+            ->join('transactions', 'reviews.transaction_id', '=', 'transactions.id')
+            ->select('reviews.rate', 'reviews.comment', 'transactions.name')
+            ->orderBy('reviews.created_at', 'desc') // Pastikan untuk menentukan tabel
+            ->limit(5)
+            ->get();
+
         return view('frontend.index', [
             'chefs' => $chefs,
             'events' => $events,
@@ -31,7 +40,8 @@ class MainController extends Controller
             'menu_breakfast' => $this->getMenu(2),
             'menu_lunch' => $this->getMenu(3),
             'menu_dinner' => $this->getMenu(4),
-            'images' => $images
+            'images' => $images,
+            'reviews' => $reviews // Tambahkan data review ke view
         ]);
     }
 
